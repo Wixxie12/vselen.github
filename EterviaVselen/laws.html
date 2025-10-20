@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Законы - EterviaVselen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="space-background">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="page-transition" id="pageTransition">
+        <div class="portal"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>EterviaVselen</h1>
+                    </a>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <span id="userInfo"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container fade-in">
+            <h2 class="form-title">Создание вселенной</h2>
+            <p class="form-subtitle" style="text-align: center; margin-bottom: 2rem; color: #c77dff;">Шаг 4: Законы</p>
+
+            <div class="laws-section">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #c77dff;">⚖️ Раздел: «Законы»</h3>
+                <p style="text-align: center; margin-bottom: 2rem;">Выберите один или несколько законов для вашего мира</p>
+
+                <div class="laws-grid">
+                    <div class="law-option" data-law="magic-unlimited">
+                        <span class="law-icon">🔮</span>
+                        <div class="law-title">Магия безгранична для всех</div>
+                        <div class="law-description">Магию фей и искусство вампиров может познать любой человек</div>
+                    </div>
+
+                    <div class="law-option" data-law="magic-forbidden">
+                        <span class="law-icon">🚫</span>
+                        <div class="law-title">Магия под строгим запретом</div>
+                        <div class="law-description">Волшебные существа будут под угрозой!</div>
+                    </div>
+
+                    <div class="law-option" data-law="free-trade">
+                        <span class="law-icon">💰</span>
+                        <div class="law-title">Свободная торговля</div>
+                        <div class="law-description">Можно покупать и продавать что угодно и где угодно</div>
+                    </div>
+
+                    <div class="law-option" data-law="dictatorship">
+                        <span class="law-icon">👑</span>
+                        <div class="law-title">Жесткая диктатура</div>
+                        <div class="law-description">Неограниченная власть, основанная на насилии</div>
+                    </div>
+
+                    <div class="law-option" data-law="racial-equality">
+                        <span class="law-icon">⚖️</span>
+                        <div class="law-title">Равенство всех рас</div>
+                        <div class="law-description">Меньше войн между разными народами</div>
+                    </div>
+
+                    <div class="law-option" data-law="racial-isolation">
+                        <span class="law-icon">🏘️</span>
+                        <div class="law-title">Изоляционизм Рас</div>
+                        <div class="law-description">Каждая раса живет на своей выделенной территории</div>
+                    </div>
+
+                    <div class="law-option" data-law="common-council">
+                        <span class="law-icon">🏛️</span>
+                        <div class="law-title">Общий совет</div>
+                        <div class="law-description">Люди, феи и вампиры правят вместе, советуются</div>
+                    </div>
+
+                    <div class="law-option" data-law="separate-markets">
+                        <span class="law-icon">🛒</span>
+                        <div class="law-title">Свои рынки</div>
+                        <div class="law-description">Каждая раса торгует только на своей территории</div>
+                    </div>
+
+                    <div class="law-option" data-law="village-responsibility">
+                        <span class="law-icon">🏡</span>
+                        <div class="law-title">Деревня за своих</div>
+                        <div class="law-description">Жители одной деревни отвечают друг за друга</div>
+                    </div>
+
+                    <div class="law-option" data-law="city-mayor">
+                        <span class="law-icon">🏢</span>
+                        <div class="law-title">Городской Голова</div>
+                        <div class="law-description">Жители каждого города сами выбирают себе главу</div>
+                    </div>
+                </div>
+
+                <button id="continueBtn" class="submit-btn" style="margin-top: 3rem; width: 100%;">
+                    Продолжить
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 EterviaVselen. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const continueBtn = document.getElementById('continueBtn');
+            const pageTransition = document.getElementById('pageTransition');
+
+            continueBtn.addEventListener('click', function () {
+                // Сохраняем выбранные законы
+                const selectedLaws = [];
+                document.querySelectorAll('.law-option.selected').forEach(law => {
+                    selectedLaws.push(law.getAttribute('data-law'));
+                });
+
+                // Сохраняем прогресс в аккаунте
+                saveProgress('laws', { selectedLaws: selectedLaws });
+                localStorage.setItem('selectedLaws', JSON.stringify(selectedLaws));
+
+                // Анимация перехода
+                if (pageTransition) {
+                    pageTransition.classList.add('active');
+
+                    setTimeout(() => {
+                        window.location.href = 'government.html';
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

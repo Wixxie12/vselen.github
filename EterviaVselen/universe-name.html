@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название вселенной - EterviaVselen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="space-background">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="page-transition" id="pageTransition">
+        <div class="portal"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>EterviaVselen</h1>
+                    </a>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <span id="userInfo"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container fade-in">
+            <h2 class="form-title">Создание вселенной</h2>
+            <p class="form-subtitle" style="text-align: center; margin-bottom: 2rem; color: #c77dff;">Шаг 1: Дайте имя своему миру</p>
+
+            <form id="universeNameForm">
+                <div class="form-group">
+                    <label class="form-label" for="universeName">Название вашей вселенной</label>
+                    <input type="text" id="universeName" class="form-input" placeholder="введите название｡･:*:･ﾟ'☆" required>
+                    <small style="color: #c77dff; font-size: 0.9rem;">Пусть у вашей вселенной будет звучное название, которое войдет в историю</small>
+                </div>
+                <button type="submit" class="submit-btn">Продолжить</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 EterviaVselen. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('universeNameForm');
+            const pageTransition = document.getElementById('pageTransition');
+
+            // Загружаем сохраненное название если есть
+            const savedName = localStorage.getItem('universeName');
+            if (savedName) {
+                document.getElementById('universeName').value = savedName;
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                console.log('Universe name form submitted');
+
+                const universeName = document.getElementById('universeName').value;
+
+                if (universeName.trim() === '') {
+                    alert('Пожалуйста, введите название вселенной');
+                    return;
+                }
+
+                // Сохраняем название вселенной
+                localStorage.setItem('universeName', universeName);
+                console.log('Universe name saved:', universeName);
+
+                // Сохраняем прогресс в аккаунте
+                if (typeof saveProgress === 'function') {
+                    saveProgress('universe-name', { universeName: universeName });
+                }
+
+                // Анимация перехода
+                if (pageTransition) {
+                    console.log('Starting page transition');
+                    pageTransition.classList.add('active');
+
+                    setTimeout(() => {
+                        console.log('Redirecting to planet-selection.html');
+                        window.location.href = 'planet-selection.html';
+                    }, 1500);
+                } else {
+                    console.log('Direct redirect to planet-selection.html');
+                    window.location.href = 'planet-selection.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

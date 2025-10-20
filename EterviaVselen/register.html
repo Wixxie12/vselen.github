@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - EterviaVselen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="space-background">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="page-transition" id="pageTransition">
+        <div class="portal"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>EterviaVselen</h1>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="login.html" class="nav-link">Войти</a>
+                    <a href="register.html" class="nav-link active">Регистрация</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container fade-in">
+            <h2 class="form-title">Регистрация</h2>
+            <p style="text-align: center; color: #c77dff; margin-bottom: 1rem;">Только для Gmail аккаунтов</p>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Gmail адрес</label>
+                    <input type="email" id="email" class="form-input" placeholder="example@gmail.com" required>
+                    <small style="color: #c77dff; font-size: 0.8rem;">Только @gmail.com адреса</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="username">Имя пользователя</label>
+                    <input type="text" id="username" class="form-input" placeholder="Придумайте имя" required minlength="3">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Пароль</label>
+                    <input type="password" id="password" class="form-input" placeholder="Не менее 7 символов" minlength="7" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Подтвердите пароль</label>
+                    <input type="password" id="confirmPassword" class="form-input" placeholder="Повторите пароль" minlength="7" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Создать аккаунт</button>
+            </form>
+
+            <div class="form-footer">
+                <p>Уже есть аккаунт? <a href="login.html" class="form-link">Войти</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 EterviaVselen. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

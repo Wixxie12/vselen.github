@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор планеты - EterviaVselen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="space-background">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="page-transition" id="pageTransition">
+        <div class="portal"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>EterviaVselen</h1>
+                    </a>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <span id="userInfo"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container fade-in">
+            <h2 class="form-title">Создание вселенной</h2>
+            <p class="form-subtitle" style="text-align: center; margin-bottom: 2rem; color: #c77dff;">Шаг 2: Выберите планету</p>
+            <p style="text-align: center; margin-bottom: 3rem;">Выбирайте планету на которой будет существовать жизнь!</p>
+
+            <div class="planets-container">
+                <div class="planet-option planet-1" data-planet="aurora">
+                    <div class="planet-image">
+                        Аврора
+                    </div>
+                    <div class="planet-name">Планета Аврора</div>
+                </div>
+
+                <div class="planet-option planet-2" data-planet="umbra">
+                    <div class="planet-image">
+                        Умбра
+                    </div>
+                    <div class="planet-name">Планета Умбра</div>
+                </div>
+            </div>
+
+            <button id="continueBtn" class="submit-btn" style="margin-top: 3rem; display: none;">Продолжить</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 EterviaVselen. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const planetOptions = document.querySelectorAll('.planet-option');
+            const continueBtn = document.getElementById('continueBtn');
+            const pageTransition = document.getElementById('pageTransition');
+            let selectedPlanet = null;
+
+            planetOptions.forEach(planet => {
+                planet.addEventListener('click', function () {
+                    console.log('Planet selected:', this.getAttribute('data-planet'));
+
+                    // Убираем выделение со всех планет
+                    planetOptions.forEach(p => p.classList.remove('planet-selected'));
+
+                    // Выделяем выбранную планету
+                    this.classList.add('planet-selected');
+                    selectedPlanet = this.getAttribute('data-planet');
+
+                    // Показываем кнопку продолжения
+                    continueBtn.style.display = 'block';
+                });
+            });
+
+            continueBtn.addEventListener('click', function () {
+                console.log('Continue button clicked');
+
+                if (!selectedPlanet) {
+                    alert('Пожалуйста, выберите планету');
+                    return;
+                }
+
+                // Сохраняем выбор планеты
+                localStorage.setItem('selectedPlanet', selectedPlanet);
+                console.log('Planet saved to localStorage:', selectedPlanet);
+
+                // Сохраняем прогресс в аккаунте
+                if (typeof saveProgress === 'function') {
+                    saveProgress('planet', { selectedPlanet: selectedPlanet });
+                }
+
+                // Анимация перехода
+                if (pageTransition) {
+                    console.log('Starting page transition');
+                    pageTransition.classList.add('active');
+
+                    setTimeout(() => {
+                        console.log('Redirecting to population.html');
+                        window.location.href = 'population.html';
+                    }, 1500);
+                } else {
+                    console.log('Direct redirect to population.html');
+                    window.location.href = 'population.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

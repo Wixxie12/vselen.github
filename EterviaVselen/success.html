@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вселенная создана! - EterviaVselen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="space-background">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>EterviaVselen</h1>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <span id="userInfo"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container fade-in" style="text-align: center;">
+            <div class="success-icon" style="font-size: 4rem; margin-bottom: 2rem;">✨</div>
+            <h2 class="form-title">Поздравляем!</h2>
+            <p class="form-subtitle" style="margin-bottom: 2rem; color: #c77dff;">Ваша вселенная успешно создана</p>
+
+            <div class="universe-summary" style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: #c77dff;">Сводка вашей вселенной:</h3>
+
+                <div id="universeDetails">
+                    <!-- Данные будут заполнены JavaScript -->
+                </div>
+            </div>
+
+            <p style="margin-bottom: 2rem; font-style: italic;">
+                Ваш мир оживает... Приготовьтесь управлять судьбой целой вселенной!
+            </p>
+
+            <div class="action-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="submit-btn" onclick="viewUniverse()">
+                    Перейти в свою вселенную
+                </button>
+                <button class="submit-btn" style="background: transparent; border: 2px solid #9d4edd;" onclick="createNewUniverse()">
+                    Создать новую вселенную
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 EterviaVselen. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Загружаем данные вселенной и отображаем их
+            const universeDetails = document.getElementById('universeDetails');
+
+            const universeName = localStorage.getItem('universeName') || 'Не указано';
+            const selectedPlanet = localStorage.getItem('selectedPlanet') || 'Не выбрана';
+            const populationData = JSON.parse(localStorage.getItem('populationData') || '{}');
+            const selectedLaws = JSON.parse(localStorage.getItem('selectedLaws') || '[]');
+            const governmentData = JSON.parse(localStorage.getItem('governmentData') || '{}');
+
+            let html = `
+                    <p><strong>Название:</strong> ${universeName}</p>
+                    <p><strong>Планета:</strong> ${selectedPlanet === 'aurora' ? 'Аврора' : 'Умбра'}</p>
+                `;
+
+            // Население
+            html += '<p><strong>Население:</strong></p><ul style="text-align: left; margin-left: 2rem;">';
+            for (const [race, count] of Object.entries(populationData)) {
+                if (count > 0) {
+                    html += `<li>${race}: ${new Intl.NumberFormat('ru-RU').format(count)}</li>`;
+                }
+            }
+            html += '</ul>';
+
+            // Законы
+            html += '<p><strong>Законы:</strong></p><ul style="text-align: left; margin-left: 2rem;">';
+            selectedLaws.forEach(law => {
+                html += `<li>${getLawName(law)}</li>`;
+            });
+            html += '</ul>';
+
+            // Правительство
+            html += '<p><strong>Правительство:</strong> ' + getGovernmentType(governmentData.type) + '</p>';
+
+            universeDetails.innerHTML = html;
+        });
+
+        function getLawName(lawKey) {
+            const laws = {
+                'magic-unlimited': 'Магия безгранична для всех',
+                'magic-forbidden': 'Магия под строгим запретом',
+                'free-trade': 'Свободная торговля',
+                'dictatorship': 'Жесткая диктатура',
+                'racial-equality': 'Равенство всех рас',
+                'racial-isolation': 'Изоляционизм Рас',
+                'common-council': 'Общий совет',
+                'separate-markets': 'Свои рынки',
+                'village-responsibility': 'Деревня за своих',
+                'city-mayor': 'Городской Голова'
+            };
+            return laws[lawKey] || lawKey;
+        }
+
+        function getGovernmentType(type) {
+            const types = {
+                'monarchy': 'Монархия',
+                'council': 'Совет Старейшин',
+                'republic': 'Народная Республика',
+                'anarchy': 'Без правительства'
+            };
+            return types[type] || type;
+        }
+
+        function viewUniverse() {
+            alert('Переход в созданную вселенную! Здесь будет игровой интерфейс управления миром.');
+            // В реальном приложении здесь будет переход на страницу управления вселенной
+        }
+
+        function createNewUniverse() {
+            if (confirm('Вы уверены, что хотите создать новую вселенную? Текущий прогресс будет сохранен.')) {
+                window.location.href = 'universe-name.html';
+            }
+        }
+    </script>
+</body>
+</html>

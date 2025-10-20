@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правительство - EterviaVselen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="space-background">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="page-transition" id="pageTransition">
+        <div class="portal"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>EterviaVselen</h1>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <span id="userInfo"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container fade-in">
+            <h2 class="form-title">Создание вселенной</h2>
+            <p class="form-subtitle" style="text-align: center; margin-bottom: 2rem; color: #c77dff;">Шаг 5: Правительство</p>
+
+            <div class="government-options">
+                <div class="gov-type">
+                    <h3 class="gov-title">1. Тип правления (Как управляется ваш мир?)</h3>
+                    <div class="region-options">
+                        <div class="region-option" data-gov-type="monarchy">
+                            <div class="region-name">👑 Монархия</div>
+                            <div class="region-description">Король/Королева</div>
+                        </div>
+                        <div class="region-option" data-gov-type="council">
+                            <div class="region-name">🧙‍♂️ Совет Старейшин</div>
+                            <div class="region-description">Правление мудрецов</div>
+                        </div>
+                        <div class="region-option" data-gov-type="republic">
+                            <div class="region-name">🏛️ Народная Республика</div>
+                            <div class="region-description">Власть народа</div>
+                        </div>
+                        <div class="region-option" data-gov-type="anarchy">
+                            <div class="region-name">⚫ Без правительства</div>
+                            <div class="region-description">Полная свобода</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="leadersSection" class="gov-type">
+                    <h3 class="gov-title">2. Выбор лидеров для регионов (Кто главный в каждой части вашего мира?)</h3>
+
+                    <div class="region-options">
+                        <!-- Столичный округ -->
+                        <div class="region-option">
+                            <div class="region-name">🏙️ Столичный округ (Главный город)</div>
+                            <div class="leader-option" data-region="capital" data-leader="just">
+                                <div class="leader-name">Справедливый лидер</div>
+                                <div class="leader-description">Порядок и забота о людях</div>
+                            </div>
+                            <div class="leader-option" data-region="capital" data-leader="reformer">
+                                <div class="leader-name">Реформатор</div>
+                                <div class="leader-description">Любит нововведения и изменения</div>
+                            </div>
+                            <div class="leader-option" data-region="capital" data-leader="corrupt">
+                                <div class="leader-name">Коррупционер</div>
+                                <div class="leader-description">Думает только о своей выгоде</div>
+                            </div>
+                        </div>
+
+                        <!-- Приграничные земли -->
+                        <div class="region-option">
+                            <div class="region-name">🏔️ Приграничные земли (Окраины государства)</div>
+                            <div class="leader-option" data-region="border" data-leader="conqueror">
+                                <div class="leader-name">Жестокий завоеватель</div>
+                                <div class="leader-description">Сила и агрессия</div>
+                            </div>
+                            <div class="leader-option" data-region="border" data-leader="commander">
+                                <div class="leader-name">Опытный полководец</div>
+                                <div class="leader-description">Справедливая военная власть</div>
+                            </div>
+                            <div class="leader-option" data-region="border" data-leader="hero">
+                                <div class="leader-name">Народный герой</div>
+                                <div class="leader-description">Любим народом</div>
+                            </div>
+                        </div>
+
+                        <!-- Торговый союз -->
+                        <div class="region-option">
+                            <div class="region-name">🏪 Торговый союз (Экономический центр)</div>
+                            <div class="leader-option" data-region="trade" data-leader="greedy">
+                                <div class="leader-name">Жадный богач</div>
+                                <div class="leader-description">Народ бедствует, деньги у верхушки</div>
+                            </div>
+                            <div class="leader-option" data-region="trade" data-leader="patron">
+                                <div class="leader-name">Справедливый покровитель</div>
+                                <div class="leader-description">Заботится о развитии и благосостоянии</div>
+                            </div>
+                            <div class="leader-option" data-region="trade" data-leader="dealer">
+                                <div class="leader-name">Хитрый делец</div>
+                                <div class="leader-description">Махинации и обман</div>
+                            </div>
+                        </div>
+
+                        <!-- Магический анклав -->
+                        <div class="region-option">
+                            <div class="region-name">🔮 Магический анклав (Центр магии и знаний)</div>
+                            <div class="leader-option" data-region="magic" data-leader="wizard">
+                                <div class="leader-name">Мудрый волшебник</div>
+                                <div class="leader-description">Сила + мудрость</div>
+                            </div>
+                            <div class="leader-option" data-region="magic" data-leader="scientist">
+                                <div class="leader-name">Безумный ученый</div>
+                                <div class="leader-description">Опасные эксперименты</div>
+                            </div>
+                            <div class="leader-option" data-region="magic" data-leader="genius">
+                                <div class="leader-name">Юный гений</div>
+                                <div class="leader-description">Талантлив, но неопытен</div>
+                            </div>
+                        </div>
+
+                        <!-- Сельские угодья -->
+                        <div class="region-option">
+                            <div class="region-name">🌾 Сельские угодья (Деревни и фермы)</div>
+                            <div class="leader-option" data-region="rural" data-leader="elder">
+                                <div class="leader-name">Заботливый староста</div>
+                                <div class="leader-description">Искренне помогает людям</div>
+                            </div>
+                            <div class="leader-option" data-region="rural" data-leader="landowner">
+                                <div class="leader-name">Жестокий помещик</div>
+                                <div class="leader-description">Угнетение и рабство</div>
+                            </div>
+                            <div class="leader-option" data-region="rural" data-leader="official">
+                                <div class="leader-name">Равнодушный чиновник</div>
+                                <div class="leader-description">Ничего не делает</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="finishBtn" class="submit-btn" style="margin-top: 3rem; width: 100%;">
+                    Готово!
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 EterviaVselen. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const finishBtn = document.getElementById('finishBtn');
+            const pageTransition = document.getElementById('pageTransition');
+            const leadersSection = document.getElementById('leadersSection');
+            const govOptions = document.querySelectorAll('[data-gov-type]');
+
+            // Обработка выбора типа правления
+            govOptions.forEach(option => {
+                option.addEventListener('click', function () {
+                    // Убираем выделение
+                    govOptions.forEach(opt => opt.classList.remove('selected'));
+                    // Выделяем выбранный
+                    this.classList.add('selected');
+
+                    // Если выбран "Без правительства", скрываем раздел с лидерами
+                    if (this.getAttribute('data-gov-type') === 'anarchy') {
+                        leadersSection.style.display = 'none';
+                    } else {
+                        leadersSection.style.display = 'block';
+                    }
+                });
+            });
+
+            finishBtn.addEventListener('click', function () {
+                // Сохраняем данные о правительстве
+                const selectedGovType = document.querySelector('[data-gov-type].selected');
+
+                if (!selectedGovType) {
+                    alert('Пожалуйста, выберите тип правления');
+                    return;
+                }
+
+                const govData = {
+                    type: selectedGovType.getAttribute('data-gov-type'),
+                    leaders: {}
+                };
+
+                // Если не анархия, собираем данные о лидерах
+                if (govData.type !== 'anarchy') {
+                    document.querySelectorAll('.leader-option.selected').forEach(leader => {
+                        const region = leader.getAttribute('data-region');
+                        const leaderType = leader.getAttribute('data-leader');
+                        govData.leaders[region] = leaderType;
+                    });
+                }
+
+                localStorage.setItem('governmentData', JSON.stringify(govData));
+
+                // Анимация перехода
+                if (pageTransition) {
+                    pageTransition.classList.add('active');
+
+                    setTimeout(() => {
+                        window.location.href = 'success.html';
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Население - EterviaVselen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="space-background">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="page-transition" id="pageTransition">
+        <div class="portal"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h1>EterviaVselen</h1>
+                    </a>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <span id="userInfo"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container fade-in">
+            <h2 class="form-title">Создание вселенной</h2>
+            <p class="form-subtitle" style="text-align: center; margin-bottom: 2rem; color: #c77dff;">Шаг 3: Население</p>
+
+            <div class="population-section">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #c77dff;">👥 Раздел: «Население»</h3>
+
+                <div id="races-container" class="slider-container">
+                    <!-- Люди -->
+                    <div class="slider-group">
+                        <div class="slider-label">
+                            <span class="race-name">👤 Люди</span>
+                            <span class="race-value">0</span>
+                        </div>
+                        <input type="range" class="range-slider" min="0" max="10000000" value="0" step="100000">
+                    </div>
+
+                    <!-- Эльфы -->
+                    <div class="slider-group">
+                        <div class="slider-label">
+                            <span class="race-name">🧝 Эльфы</span>
+                            <span class="race-value">0</span>
+                        </div>
+                        <input type="range" class="range-slider" min="0" max="10000000" value="0" step="100000">
+                    </div>
+
+                    <!-- Вампиры -->
+                    <div class="slider-group">
+                        <div class="slider-label">
+                            <span class="race-name">🧛 Вампиры</span>
+                            <span class="race-value">0</span>
+                        </div>
+                        <input type="range" class="range-slider" min="0" max="10000000" value="0" step="100000">
+                    </div>
+
+                    <!-- Феи -->
+                    <div class="slider-group">
+                        <div class="slider-label">
+                            <span class="race-name">🧚 Феи</span>
+                            <span class="race-value">0</span>
+                        </div>
+                        <input type="range" class="range-slider" min="0" max="10000000" value="0" step="100000">
+                    </div>
+                </div>
+
+                <button onclick="addNewRace()" class="add-race-btn">
+                    <span>+</span> Добавить новую расу
+                </button>
+
+                <div class="fauna-section" style="margin-top: 3rem;">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: #c77dff;">🐾 Раздел: «Флора и Фауна»</h3>
+
+                    <button class="submit-btn" style="width: 100%; margin-bottom: 2rem;" onclick="configureFauna()">
+                        Настроить фауну
+                    </button>
+
+                    <div id="faunaSettings" style="display: none;">
+                        <div class="slider-group">
+                            <div class="slider-label">
+                                <span class="race-name">🐺 Преобладают хищники (опасный мир)</span>
+                                <span class="race-value">0%</span>
+                            </div>
+                            <input type="range" class="range-slider fauna-slider" min="0" max="100" value="0" step="1">
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-label">
+                                <span class="race-name">🦌 Преобладают травоядные (мирный мир)</span>
+                                <span class="race-value">0%</span>
+                            </div>
+                            <input type="range" class="range-slider fauna-slider" min="0" max="100" value="0" step="1">
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-label">
+                                <span class="race-name">🦄 Фантастические существа</span>
+                                <span class="race-value">0%</span>
+                            </div>
+                            <input type="range" class="range-slider fauna-slider" min="0" max="100" value="0" step="1">
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-label">
+                                <span class="race-name">🏜️ Редкая фауна (безжизненный мир)</span>
+                                <span class="race-value">0%</span>
+                            </div>
+                            <input type="range" class="range-slider fauna-slider" min="0" max="100" value="0" step="1">
+                        </div>
+                    </div>
+                </div>
+
+                <button id="continueBtn" class="submit-btn" style="margin-top: 3rem; width: 100%;">
+                    Продолжить
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 EterviaVselen. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const continueBtn = document.getElementById('continueBtn');
+            const pageTransition = document.getElementById('pageTransition');
+
+            // Загружаем сохраненные данные если есть
+            const savedPopulation = localStorage.getItem('populationData');
+            if (savedPopulation) {
+                const populationData = JSON.parse(savedPopulation);
+                document.querySelectorAll('.slider-group').forEach(group => {
+                    const raceName = group.querySelector('.race-name').textContent;
+                    if (populationData[raceName]) {
+                        const slider = group.querySelector('.range-slider');
+                        const valueDisplay = group.querySelector('.race-value');
+                        slider.value = populationData[raceName];
+                        valueDisplay.textContent = new Intl.NumberFormat('ru-RU').format(populationData[raceName]);
+                    }
+                });
+            }
+
+            // Инициализация слайдеров фауны
+            const faunaSliders = document.querySelectorAll('.fauna-slider');
+            faunaSliders.forEach(slider => {
+                const valueDisplay = slider.parentElement.querySelector('.race-value');
+
+                slider.addEventListener('input', function () {
+                    valueDisplay.textContent = this.value + '%';
+                });
+            });
+
+            continueBtn.addEventListener('click', function () {
+                console.log('Population continue button clicked');
+
+                // Сохраняем данные о населении
+                const raceData = {};
+                document.querySelectorAll('.slider-group').forEach(group => {
+                    const raceName = group.querySelector('.race-name').textContent;
+                    const raceValue = group.querySelector('.range-slider').value;
+                    raceData[raceName] = raceValue;
+                });
+
+                localStorage.setItem('populationData', JSON.stringify(raceData));
+                console.log('Population data saved:', raceData);
+
+                // Сохраняем прогресс в аккаунте
+                if (typeof saveProgress === 'function') {
+                    saveProgress('population', { populationData: raceData });
+                }
+
+                // Анимация перехода
+                if (pageTransition) {
+                    console.log('Starting page transition to laws.html');
+                    pageTransition.classList.add('active');
+
+                    setTimeout(() => {
+                        console.log('Redirecting to laws.html');
+                        window.location.href = 'laws.html';
+                    }, 1500);
+                } else {
+                    console.log('Direct redirect to laws.html');
+                    window.location.href = 'laws.html';
+                }
+            });
+        });
+
+        function configureFauna() {
+            const faunaSettings = document.getElementById('faunaSettings');
+            faunaSettings.style.display = faunaSettings.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

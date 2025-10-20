@@ -1,0 +1,581 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Космический фон */
+.space-background {
+    background: linear-gradient(to bottom, #0c0c2b, #1a1a3e, #2d1b69);
+    position: relative;
+}
+
+.stars, .twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars {
+    background: #000 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="10" cy="10" r="1" fill="white" opacity="0.7"/><circle cx="50" cy="80" r="1.5" fill="white" opacity="0.5"/><circle cx="120" cy="40" r="1" fill="white" opacity="0.9"/><circle cx="180" cy="120" r="1" fill="white" opacity="0.6"/><circle cx="80" cy="150" r="1.5" fill="white" opacity="0.8"/></svg>') repeat;
+    z-index: -2;
+}
+
+.twinkling {
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.3"/><circle cx="70" cy="50" r="1" fill="white" opacity="0.4"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.5"/></svg>') repeat;
+    z-index: -1;
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+/* Навигация */
+.navbar {
+    background: rgba(10, 10, 35, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: #c77dff; /* Простой цвет вместо градиента */
+    text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+}
+.logout-btn {
+    background: transparent;
+    border: 1px solid #c77dff;
+    color: #c77dff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+    .logout-btn:hover {
+        background: rgba(199, 125, 255, 0.1);
+        transform: translateY(-1px);
+    }
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+    .nav-link:hover, .nav-link.active {
+        color: #c77dff;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #c77dff;
+        transition: width 0.3s;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+        width: 100%;
+    }
+
+/* Главный контент */
+.hero-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+    text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.creation-steps, .life-section, .laws-section {
+    margin-bottom: 3rem;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .creation-steps h3, .life-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: #c77dff;
+        text-align: center;
+    }
+
+.step, .life-step, .law-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+.step-icon, .life-icon, .law-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.life-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin: 3rem 0 2rem;
+}
+
+.final-call {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+    .final-call p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+    }
+
+/* Кнопка призыва к действию */
+.cta-button {
+    position: relative;
+    background: linear-gradient(45deg, #7b2cbf, #9d4edd);
+    border: none;
+    border-radius: 50px;
+    padding: 1.2rem 3rem;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+}
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(157, 78, 221, 0.6);
+    }
+
+    .cta-button:active {
+        transform: translateY(1px);
+    }
+
+.star-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Формы */
+.form-container {
+    max-width: 500px;
+    margin: 5rem auto;
+    padding: 2rem;
+    background: rgba(20, 20, 50, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: #c77dff;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+    .form-input:focus {
+        outline: none;
+        border-color: #9d4edd;
+        box-shadow: 0 0 0 2px rgba(157, 78, 221, 0.2);
+    }
+
+.submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(45deg, #7b2cbf, #9d4edd);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+    }
+
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.form-link {
+    color: #c77dff;
+    text-decoration: none;
+}
+
+    .form-link:hover {
+        text-decoration: underline;
+    }
+
+/* Страница выбора планет */
+.planets-container {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.planet-option {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
+}
+
+    .planet-option:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(157, 78, 221, 0.6);
+    }
+
+.planet-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #5a189a, #9d4edd);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.planet-1 .planet-image {
+    background: linear-gradient(45deg, #4361ee, #3a0ca3);
+}
+
+.planet-2 .planet-image {
+    background: linear-gradient(45deg, #f72585, #7209b7);
+}
+
+.planet-name {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: bottom 0.3s;
+}
+
+.planet-option:hover .planet-name {
+    bottom: 10px;
+}
+
+/* Страница населения */
+.slider-container {
+    margin-bottom: 2rem;
+}
+
+.slider-group {
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.slider-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.race-name {
+    font-weight: 600;
+}
+
+.race-value {
+    color: #c77dff;
+}
+
+.range-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+}
+
+    .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #9d4edd;
+        cursor: pointer;
+    }
+
+.add-race-btn {
+    background: transparent;
+    border: 2px dashed #9d4edd;
+    color: #9d4edd;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+}
+
+    .add-race-btn:hover {
+        background: rgba(157, 78, 221, 0.1);
+    }
+
+/* Страница законов */
+.laws-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.law-option {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(157, 78, 221, 0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .law-option:hover {
+        transform: translateY(-5px);
+        border-color: #9d4edd;
+        box-shadow: 0 5px 15px rgba(157, 78, 221, 0.3);
+    }
+
+    .law-option.selected {
+        border-color: #9d4edd;
+        background: rgba(157, 78, 221, 0.1);
+        box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+    }
+
+.law-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+    text-align: center;
+}
+
+.law-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.law-description {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    text-align: center;
+}
+
+/* Страница правительства */
+.government-options {
+    margin-top: 2rem;
+}
+
+.gov-type {
+    margin-bottom: 2rem;
+}
+
+.gov-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #c77dff;
+    border-bottom: 1px solid rgba(157, 78, 221, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.region-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.region-option {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+}
+
+    .region-option:hover {
+        border-color: rgba(157, 78, 221, 0.3);
+    }
+
+    .region-option.selected {
+        border-color: #9d4edd;
+        background: rgba(157, 78, 221, 0.1);
+    }
+
+.region-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.leader-option {
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.3rem;
+    transition: background 0.2s;
+}
+
+    .leader-option:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .leader-option.selected {
+        background: rgba(157, 78, 221, 0.2);
+    }
+
+/* Футер */
+footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    text-align: center;
+    background: rgba(10, 10, 35, 0.8);
+    border-top: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .planets-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .planet-option {
+        width: 250px;
+        height: 250px;
+    }
+
+    .laws-grid {
+        grid-template-columns: 1fr;
+    }
+}
